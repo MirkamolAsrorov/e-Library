@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Elibrary</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/user/users">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/getBooksForAdmin">Books</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link disabled" href="/user/logOut">Log out</a>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br>
+<table class="table caption-top">
+  <caption>List of users</caption>
+  <thead>
+  <tr>
+    <th scope="col">Callno</th>
+    <th scope="col">Name</th>
+    <th scope="col">Author</th>
+    <th scope="col">Publisher</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Issued</th>
+    <th scope="col">Active</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="booksForAdmin,i : ${listOfBooks}">
+    <td th:text="${booksForAdmin.callno}"></td>
+    <td th:text="${booksForAdmin.name}"></td>
+    <td th:text="${booksForAdmin.author}"></td>
+    <td th:text="${booksForAdmin.publisher}"></td>
+    <td th:text="${booksForAdmin.quantity}"></td>
+    <td th:text="${booksForAdmin.issued}"></td>
+    <td th:text="${booksForAdmin.active}"></td>
+  </tr>
+  </tbody>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Librarian</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/booksList/getBooks">Elibrary</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getAddBookPage">Add Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getAdAnIssuedBookPage"> Add an issued book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getViewIssuedBookPage">View Issued Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getReturnBookPage">Return Book</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link disabled" href="/user/logOut">Log out</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<h4 style="background-color:#ff1500;">The Quantity must be greater than zero!</h4>
+<table class="table">
+    <caption>List of users</caption>
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Callno</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Issued</th>
+        <th scope="col">Active</th>
+        <th scope="col">Operation</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="librarian,i : ${bookList}">
+        <td th:text="${librarian.callno}"></td>
+        <td th:text="${librarian.name}"></td>
+        <td th:text="${librarian.author}"></td>
+        <td th:text="${librarian.publisher}"></td>
+        <td th:text="${librarian.quantity}"></td>
+        <td th:text="${librarian.issued}"></td>
+        <td th:text="${librarian.active}"></td>
+        <td>
+            <a class="btn btn-outline-primary" th:href="${'/booksList/add/'+librarian.id}">Add</a>
+            <a class="btn btn-outline-danger" th:href="${'/booksList/delete/'+librarian.id}">Delete</a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

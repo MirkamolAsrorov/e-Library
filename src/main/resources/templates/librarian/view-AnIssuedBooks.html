@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View an issued book</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/booksList/getBooks">Elibrary</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getAddBookPage">Add Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getAdAnIssuedBookPage"> Add an issued book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getViewIssuedBookPage">View Issued Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/booksList/getReturnBookPage">Return Book</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link disabled" href="/user/logOut">Log out</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<br>
+<table class="table">
+    <caption>List of issued books</caption>
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Callno</th>
+        <th scope="col">Student Id</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Student Mobile</th>
+        <th scope="col">Issued Date</th>
+        <th scope="col">Return Status</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="issuedBooks,i : ${issuedBookList}">
+        <td th:text="${issuedBooks.getBook().getCallno()}"></td>
+        <td th:text="${issuedBooks.studentId}"></td>
+        <td th:text="${issuedBooks.studentName}"></td>
+        <td th:text="${issuedBooks.studentPhoneNumber}"></td>
+        <td th:text="${issuedBooks.time}"></td>
+        <td th:text="${issuedBooks.returnStatus}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
